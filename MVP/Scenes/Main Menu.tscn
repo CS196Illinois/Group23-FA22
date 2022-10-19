@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/(TEMP)Title.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Title/(TEMP)Title.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Start Buttons/Start Button.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Options Buttons/Options Button(Hover).png" type="Texture" id=5]
