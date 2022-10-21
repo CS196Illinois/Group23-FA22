@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Set Buttons/Back to Home Button (Hover).png" type="Texture" id=10]
 [ext_resource path="res://Assets/Set Buttons/Back to Home Button.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Set Buttons/Back to Home Button (Pressed).png" type="Texture" id=12]
-[ext_resource path="res://Scenes/Set Menu.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Set Menu.gd" type="Script" id=13]
 
 [node name="Set Menu" type="MarginContainer"]
 anchor_right = 1.0
@@ -84,4 +84,5 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 10 )
 
 [connection signal="pressed" from="Button Containers/Continue Container/Last Container/Cont w Last Set" to="." method="_on_Cont_w_Last_Set_pressed"]
+[connection signal="pressed" from="Button Containers/New Set Container/New Set" to="." method="_on_New_Set_pressed"]
 [connection signal="pressed" from="Button Containers/Go Back Container/Go Back Button" to="." method="_on_Go_Back_Button_pressed"]

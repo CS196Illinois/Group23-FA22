@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Options Menu/SFX Label.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Options Menu/BGM Label.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Options Menu/Shortcuts Button (Pressed).png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Options Menu.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Options Menu.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Options Menu/English.png" type="Texture" id=11]
 
 [node name="Options Menu" type="MarginContainer"]
