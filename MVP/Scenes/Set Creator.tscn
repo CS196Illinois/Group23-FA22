@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Set Creator/Boss Type Text.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Boss Type Dropdown Menu.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Assets/Set Creator/Back to Home Button (Hover).png" type="Texture" id=11]
 [ext_resource path="res://Assets/Set Creator/Create Set Button.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Set Creator/Create Set Button (Pressed).png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Copy&Paste.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Set Creator/Copy&Paste Label.png" type="Texture" id=15]
 
 [node name="Set Creator" type="GridContainer"]
 anchor_right = 1.0
@@ -181,10 +183,34 @@ rect_min_size = Vector2( 150, 30 )
 rect_pivot_offset = Vector2( 75, 15 )
 text = "Type Answer Here"
 
-[node name="Last Row" type="HBoxContainer" parent="."]
-margin_top = 380.0
+[node name="Copy&Paste" type="Popup" parent="."]
+visible = true
+margin_top = 250.0
 margin_right = 1024.0
-margin_bottom = 470.0
+margin_bottom = 250.0
+script = ExtResource( 14 )
+
+[node name="InstructionsContainer" type="VBoxContainer" parent="Copy&Paste"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Instructions" type="TextureRect" parent="Copy&Paste/InstructionsContainer"]
+margin_right = 750.0
+margin_bottom = 50.0
+texture = ExtResource( 15 )
+
+[node name="Quizlet Text Container" type="VBoxContainer" parent="Copy&Paste"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Quizlet Text" type="LineEdit" parent="Copy&Paste/Quizlet Text Container"]
+margin_right = 58.0
+margin_bottom = 24.0
+
+[node name="Last Row" type="HBoxContainer" parent="."]
+margin_top = 382.0
+margin_right = 1024.0
+margin_bottom = 472.0
 size_flags_vertical = 6
 
 [node name="Go Back Column" type="HBoxContainer" parent="Last Row"]
@@ -225,6 +251,7 @@ texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 5 )
 
 [connection signal="ready" from="Boss Type/Boss Dropdown" to="." method="_on_Boss_Dropdown_ready"]
+[connection signal="about_to_show" from="Copy&Paste" to="Copy&Paste" method="_on_CopyPaste_about_to_show"]
 [connection signal="pressed" from="Last Row/Go Back Column/Go Back Button" to="." method="_on_Go_Back_Button_pressed"]
 [connection signal="pressed" from="Last Row/Finish Button Column/Create Set Button" to="." method="_on_Create_Set_Button_pressed"]
-[connection signal="pressed" from="Last Row/Import Button Column/Import Set Button" to="." method="_on_Import_Set_Button_pressed"]
+[connection signal="pressed" from="Last Row/Import Button Column/Import Set Button" to="Copy&Paste" method="_on_Import_Set_Button_pressed"]

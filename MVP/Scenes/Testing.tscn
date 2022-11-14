@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Set Creator/Import Set Button (Hover).png" type="Texture" id=1]
+[ext_resource path="res://Assets/Set Creator/Import Set Button.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Set Creator/Import Set Button (Pressed).png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Copy&Paste.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Set Creator/Copy&Paste Label.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Copy&Paste" type="Popup" parent="."]
+visible = true
+margin_top = 250.0
+margin_right = 1024.0
+margin_bottom = 250.0
+rect_scale = Vector2( 1, 0.999369 )
+script = ExtResource( 4 )
+
+[node name="InstructionsContainer" type="VBoxContainer" parent="Copy&Paste"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Instructions" type="TextureRect" parent="Copy&Paste/InstructionsContainer"]
+margin_right = 750.0
+margin_bottom = 50.0
+texture = ExtResource( 5 )
+
+[node name="Quizlet Text Container" type="VBoxContainer" parent="Copy&Paste"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Quizlet Text" type="LineEdit" parent="Copy&Paste/Quizlet Text Container"]
+margin_right = 58.0
+margin_bottom = 24.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
+
+[connection signal="pressed" from="TextureButton" to="Copy&Paste" method="_on_TextureButton_pressed"]

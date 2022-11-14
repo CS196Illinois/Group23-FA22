@@ -1,10 +1,10 @@
 extends GridContainer
 var boss: String = ""
 var arr: Array
-#Boss Dropdown Menu
+#BOSS DROPDOWN BUTTON
 func _on_Boss_Dropdown_ready():
 	#Insert Bosses here
-	$"Boss Type/Boss Dropdown".get_popup().add_item("Alfred the Parrot")
+	$"Boss Type/Boss Dropdown".get_popup().add_check_item("Alfred the Parrot")
 	$"Boss Type/Boss Dropdown".get_popup().add_item("Taz the Gorilla")
 	$"Boss Type/Boss Dropdown".get_popup().add_item("???")
 	#BOSS NEEDS TO GET WHAT THE USER CHOSE
@@ -14,10 +14,10 @@ func _on_Boss_Dropdown_ready():
 func _on_Go_Back_Button_pressed():
 	get_tree().change_scene("res://Scenes/Set Menu.tscn")
 
-#Create Set Button
+#CREATE SET BUTTON
 func _on_Create_Set_Button_pressed():
 	#Stores questions into an array
-	var questions: Array
+	var questions: Array = []
 	#HOW DO I GO THROUGH EVERY QUESTION IN A LOOP?
 	#Gets questions
 	questions.push_back($"Question 1/Left Side (Prompts)/Prompt".get_text())
@@ -30,7 +30,7 @@ func _on_Create_Set_Button_pressed():
 	print(questions)
 	
 	#Stores answers into an array
-	var answers: Array
+	var answers: Array = []
 	#HOW DO I GO THROUGH EVERY ANSWER IN A LOOP?
 	#Gets answers
 	answers.push_back($"Question 1/Right Side (Answers)/Answer".get_text())
@@ -53,9 +53,3 @@ func _on_Create_Set_Button_pressed():
 	print(map.get(1))
 	#Goes to Dungeon
 	get_tree().change_scene("res://Scenes/Dungeon.tscn")
-
-#Import Set Button
-func _on_Import_Set_Button_pressed():
-	#PULL UP FILES AND ONLY ACCEPT JSON FILES
-	#PARSE FILE AND STORE FOR USE IN DUNGEON
-	pass
