@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Set Buttons/Back to Home Button (Hover).png" type="Texture" id=2]
+[ext_resource path="res://Assets/Set Buttons/Back to Home Button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Set Buttons/Back to Home Button (Pressed).png" type="Texture" id=4]
+[ext_resource path="res://Assets/Options Menu/SFX Label.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Options Menu/BGM Label.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Options Menu.gd" type="Script" id=10]
+
+[node name="Options Menu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="List Container" type="GridContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+columns = 2
+
+[node name="SFX" type="HBoxContainer" parent="List Container"]
+margin_right = 380.0
+margin_bottom = 143.0
+size_flags_horizontal = 0
+
+[node name="Label" type="HBoxContainer" parent="List Container/SFX"]
+margin_right = 300.0
+margin_bottom = 143.0
+
+[node name="Sound Effects" type="TextureRect" parent="List Container/SFX/Label"]
+margin_right = 300.0
+margin_bottom = 143.0
+texture = ExtResource( 7 )
+
+[node name="MuteUnmute" type="HBoxContainer" parent="List Container/SFX"]
+margin_left = 304.0
+margin_right = 380.0
+margin_bottom = 143.0
+
+[node name="OnOff" type="CheckButton" parent="List Container/SFX/MuteUnmute"]
+margin_right = 76.0
+margin_bottom = 143.0
+
+[node name="BGM" type="HBoxContainer" parent="List Container"]
+margin_left = 514.0
+margin_right = 894.0
+margin_bottom = 143.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Label" type="HBoxContainer" parent="List Container/BGM"]
+margin_right = 300.0
+margin_bottom = 143.0
+
+[node name="Background Music" type="TextureRect" parent="List Container/BGM/Label"]
+margin_right = 300.0
+margin_bottom = 143.0
+texture = ExtResource( 8 )
+
+[node name="MuteUnmute" type="HBoxContainer" parent="List Container/BGM"]
+margin_left = 304.0
+margin_top = 51.0
+margin_right = 380.0
+margin_bottom = 91.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="OnOff" type="CheckButton" parent="List Container/BGM/MuteUnmute"]
+margin_right = 76.0
+margin_bottom = 40.0
+
+[node name="Go Back" type="HBoxContainer" parent="List Container"]
+margin_top = 328.0
+margin_right = 104.0
+margin_bottom = 418.0
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="Go Back" type="TextureButton" parent="List Container/Go Back"]
+margin_right = 104.0
+margin_bottom = 90.0
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
+
+[connection signal="pressed" from="List Container/Go Back/Go Back" to="." method="_on_Go_Back_pressed"]
