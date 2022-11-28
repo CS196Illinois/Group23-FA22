@@ -53,3 +53,6 @@ func _on_Create_Set_Button_pressed():
 	print(map.get(1))
 	#Goes to Dungeon
 	get_tree().change_scene("res://Scenes/Dungeon.tscn")
+
+func _on_Import_Set_Button_pressed():
+	get_node("Copy&Paste").popup()
