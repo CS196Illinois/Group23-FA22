@@ -54,5 +54,6 @@ func _on_Create_Set_Button_pressed():
 	#Goes to Dungeon
 	get_tree().change_scene("res://Scenes/Dungeon.tscn")
 
+#Import Button
 func _on_Import_Set_Button_pressed():
-	get_node("Copy&Paste").popup()
+	get_tree().change_scene("res://Scenes/Import Quizlet.tscn")
