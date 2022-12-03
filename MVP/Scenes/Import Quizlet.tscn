@@ -29,8 +29,8 @@ texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 3 )
 
 [node name="Copy&Paste" type="VBoxContainer" parent="."]
-margin_left = 137.0
-margin_right = 887.0
+margin_left = 110.0
+margin_right = 860.0
 margin_bottom = 600.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -45,14 +45,17 @@ margin_bottom = 50.0
 texture = ExtResource( 1 )
 
 [node name="Quizlet Text Container" type="VBoxContainer" parent="Copy&Paste"]
-margin_top = 315.0
+margin_top = 54.0
 margin_right = 750.0
-margin_bottom = 339.0
-size_flags_vertical = 6
+margin_bottom = 600.0
+size_flags_vertical = 7
 
-[node name="Quizlet Text" type="LineEdit" parent="Copy&Paste/Quizlet Text Container"]
+[node name="Quizlet Text" type="TextEdit" parent="Copy&Paste/Quizlet Text Container"]
 margin_right = 750.0
-margin_bottom = 24.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+show_line_numbers = true
 caret_blink = true
 caret_blink_speed = 0.5
 
