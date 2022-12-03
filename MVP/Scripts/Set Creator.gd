@@ -2,10 +2,10 @@ extends GridContainer
 var boss: String = ""
 var arr: Array
 var map: Dictionary = {}
-#Boss Dropdown Menu
+#BOSS DROPDOWN BUTTON
 func _on_Boss_Dropdown_ready():
 	#Insert Bosses here
-	$"Boss Type/Boss Dropdown".get_popup().add_item("Alfred the Parrot")
+	$"Boss Type/Boss Dropdown".get_popup().add_check_item("Alfred the Parrot")
 	$"Boss Type/Boss Dropdown".get_popup().add_item("Taz the Gorilla")
 	$"Boss Type/Boss Dropdown".get_popup().add_item("???")
 	#BOSS NEEDS TO GET WHAT THE USER CHOSE
@@ -15,27 +15,28 @@ func _on_Boss_Dropdown_ready():
 func _on_Go_Back_Button_pressed():
 	get_tree().change_scene("res://Scenes/Set Menu.tscn")
 
-#Create Set Button
+#CREATE SET BUTTON
 func _on_Create_Set_Button_pressed():
 	#Stores questions into an array
-	var questions: Array
+	var questions: Array = []
 	questions.push_back($"Question 1/Left Side (Prompts)/Prompt".get_text())
 	questions.push_back($"Question 2/Left Side (Prompts)/Prompt".get_text())
 	questions.push_back($"Question 3/Left Side (Prompts)/Prompt".get_text())
 	questions.push_back($"Question 4/Left Side (Prompts)/Prompt".get_text())
-
 	#Stores answers into an array
-	var answers: Array
+	var answers: Array = []
 	answers.push_back($"Question 1/Right Side (Answers)/Answer".get_text())
 	answers.push_back($"Question 2/Right Side (Answers)/Answer".get_text())
 	answers.push_back($"Question 3/Right Side (Answers)/Answer".get_text())
 	answers.push_back($"Question 4/Right Side (Answers)/Answer".get_text())
 	
+	#Turns arrays into Dictionary
 	for i in range(questions.size()):
 		map[questions[i]] = answers[i]
 	
+	#Goes to Dungeon
 	get_tree().change_scene("res://Scenes/Dungeon.tscn")
 
-#Import Set Button
+#Import Button
 func _on_Import_Set_Button_pressed():
 	get_tree().change_scene("res://Scenes/Import Quizlet.tscn")
