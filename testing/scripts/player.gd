@@ -6,6 +6,8 @@ var direction : Vector2 = Vector2()
 func read_input():
 	velocity = Vector2()
 		
+	#All the if statements for Input controls the players movement & sprite animation cycles
+		
 	if Input.is_action_pressed("down"):
 		$AnimationPlayer.play("Walk_Down")
 		velocity.y += 1
