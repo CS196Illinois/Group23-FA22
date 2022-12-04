@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -7,7 +7,12 @@
 [ext_resource path="res://Assets/Dungeon/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass tiles v.2.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Dungeon/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Tilled Dirt.png" type="Texture" id=6]
 [ext_resource path="res://Assets/General Buttons/Progress05.png" type="Texture" id=7]
+[ext_resource path="res://Assets/General Buttons/SliderBar_ProgressBar.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Dungeon.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Dungeon/Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Objects/Chestnew.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/cannon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Boss.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Font/Quinquefive-K7qep.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Water.png 0"
@@ -187,6 +192,15 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 1/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 12.5, 12 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 13 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 13.5 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -209,9 +223,26 @@ tile_data = PoolIntArray( -524317, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 
 position = Vector2( 521, 337 )
 script = ExtResource( 2 )
 
+[node name="Area2D" type="Area2D" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
+position = Vector2( -2.5, -2 )
+shape = SubResource( 5 )
+
 [node name="Boss" parent="." instance=ExtResource( 4 )]
-position = Vector2( 534, 169 )
+position = Vector2( 512, 164 )
 scale = Vector2( 0.35, 0.35 )
+script = ExtResource( 12 )
+
+[node name="Question" type="Label" parent="."]
+margin_left = 377.0
+margin_top = 99.0
+margin_right = 662.0
+margin_bottom = 152.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "What is 2 + 2?"
+align = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -1, 596 )
@@ -221,17 +252,135 @@ offset_v = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="."]
-margin_left = 41.0
-margin_top = 474.0
-margin_right = 326.0
-margin_bottom = 527.0
+[node name="HP Label" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 523.0
+margin_right = 315.0
+margin_bottom = 576.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
 text = "Player Health"
+align = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="HP Label3" type="Label" parent="."]
+margin_left = 721.0
+margin_top = 524.0
+margin_right = 1006.0
+margin_bottom = 577.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Boss Health"
+align = 1
+
+[node name="PlayerHealth" type="TextureProgress" parent="."]
 margin_left = 1.0
-margin_top = 519.0
+margin_top = 539.0
 margin_right = 333.0
-margin_bottom = 575.0
-texture = ExtResource( 7 )
+margin_bottom = 598.0
+max_value = 1.0
+value = 1.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
+
+[node name="BossHealth" type="TextureProgress" parent="."]
+margin_left = 696.0
+margin_top = 543.0
+margin_right = 1028.0
+margin_bottom = 602.0
+rect_scale = Vector2( 0.993231, 0.994003 )
+max_value = 1.0
+value = 1.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
+
+[node name="Chest1" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Chest1"]
+position = Vector2( 332, 226 )
+scale = Vector2( 1.99828, 1.85689 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest1"]
+position = Vector2( 333, 226.5 )
+shape = SubResource( 6 )
+
+[node name="Answer 1 (Correct)" type="Label" parent="Chest1"]
+margin_left = 321.0
+margin_top = 193.0
+margin_right = 340.0
+margin_bottom = 212.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "4"
+align = 1
+
+[node name="Chest2" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Chest2"]
+position = Vector2( 725, 242 )
+scale = Vector2( 1.99828, 1.85689 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest2"]
+position = Vector2( 726, 243 )
+shape = SubResource( 6 )
+
+[node name="Answer 2 (Wrong)" type="Label" parent="Chest2"]
+margin_left = 716.0
+margin_top = 208.0
+margin_right = 735.0
+margin_bottom = 227.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "3"
+align = 1
+
+[node name="Chest3" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Chest3"]
+position = Vector2( 357, 438 )
+scale = Vector2( 1.99828, 1.85689 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest3"]
+position = Vector2( 358, 439 )
+shape = SubResource( 6 )
+
+[node name="Answer 3 (Wrong)" type="Label" parent="Chest3"]
+margin_left = 348.0
+margin_top = 404.0
+margin_right = 367.0
+margin_bottom = 423.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "5"
+align = 1
+
+[node name="Chest4" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Chest4"]
+position = Vector2( 683, 472 )
+scale = Vector2( 1.99828, 1.85689 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest4"]
+position = Vector2( 684, 473 )
+shape = SubResource( 6 )
+
+[node name="Answer 4 (Wrong)" type="Label" parent="Chest4"]
+margin_left = 665.0
+margin_top = 439.0
+margin_right = 703.0
+margin_bottom = 458.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "-4"
+align = 1
+
+[node name="Cannon" parent="." instance=ExtResource( 11 )]
+position = Vector2( 465, 514 )
+
+[connection signal="area_entered" from="Chest1" to="player" method="_on_Chest1_area_entered"]
+[connection signal="area_entered" from="Chest2" to="player" method="_on_Chest2_area_entered"]
+[connection signal="area_entered" from="Chest3" to="player" method="_on_Chest3_area_entered"]
+[connection signal="area_entered" from="Chest4" to="player" method="_on_Chest4_area_entered"]

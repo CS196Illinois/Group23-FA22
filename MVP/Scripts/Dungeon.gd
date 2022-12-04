@@ -1,4 +1,6 @@
 extends Node2D
+var correctAnswer = "4"
+
 #Get set creator's map
 var SetCreator = preload("res://Scripts/Set Creator.gd").new()
 var SetCreatorMap: Dictionary = SetCreator.map
@@ -6,51 +8,17 @@ var SetCreatorMap: Dictionary = SetCreator.map
 var ImportQuizlet = preload("res://Scripts/Import Quizlet.gd").new()
 var ImportQuizletMap: Dictionary = ImportQuizlet.map
 
-func _ready():
-	_firstQuestion()
-	_damagePlayer()
-func _firstQuestion():
-	#Display question
-	
-	#Display answers
-	pass
-func _secondQuestion():
-	#Display question
-	
-	#Place the chests
-	
-	#Display answers
-	pass
-func _thirdQuestion():
-	#Display question
-	
-	#Place the chests
-	
-	#Display answers
-	pass
-func _fourthQuestion():
-	#Display question
-	
-	#Place the chests
-	
-	#Display answers
-	pass
+func _physics_process(_delta):
+	read_input()
 
-func _correctFirst():
-	#Damage Boss
-	_secondQuestion()
-func _correctSecond():
-	#Damage Boss
-	_thirdQuestion()
-func _correctThird():
-	#Damage Boss
-	_fourthQuestion()
-
-func _wrong():
-	_damagePlayer()
+func read_input():
+	if Input.is_action_pressed("ui_accept"):
+		_damagePlayer()
+	if Input.is_action_pressed("ui_cancel"):
+		_damageBoss()
 
 func _damagePlayer():
-	get_node("Player Health")
+	$PlayerHealth.value = 0
 
 func _damageBoss():
-	pass
+	$BossHealth.value = 0
